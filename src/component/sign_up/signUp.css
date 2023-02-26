@@ -5,13 +5,14 @@
 .sign_up{
     width: 100%;
     height: 100vh;
-    padding: 20px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .left_sign{
     width: 50%;
     height: auto;
-    border: 1px solid;
     padding: 20px;
 }
 
@@ -45,12 +46,16 @@
 .sign_text p:nth-child(3) a{
     color: #362DC3;
     font-weight: 600;
+    transition: all 0.5s;
+}
+.sign_text p:nth-child(3) a:hover{
+    opacity: 0.7;
 }
 
 .forms{
     width: 100%;
     height: auto;
-    margin-top: 46px;
+    margin-top: 26px;
 }
 
 .form_text{
@@ -66,7 +71,7 @@
     width: 100%;
     height: auto;
     position: relative;
-    margin-bottom: 44px;
+    margin-bottom: 35px;
 }
 
 .IcInput i{
@@ -90,6 +95,24 @@
     outline: none;
     border-bottom: 3px solid;
 }
+.buttom{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.buttom button{
+    padding: 20px 140px;
+    border: none;
+    border-radius: 50px;
+    background-color: #362DC3;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
 
 .active{
     color: #362DC3;
@@ -99,7 +122,6 @@
 }
 
 .eye_icons{
-
     position: absolute;
     right: 100px;
     top: 50%;
@@ -107,4 +129,54 @@
 }
 
 
+/* box-right */
 
+
+.right_img_sign{
+    width: 50%;
+    height: 100%;
+}
+.right_img_sign img{
+    width: 95%;
+    height: 100%;
+}
+
+
+@media only screen and (max-width: 902px){
+    .sign_up{
+        display: flex;
+        flex-direction: column;
+    }
+    .left_sign{
+        width: 100%;
+    }
+    .right_img_sign{
+        display: none;
+    }
+}
+@media only screen and (max-width: 560px){
+    .sign_text h2{
+        font-size: 26px;
+    }
+    .sign_text p:nth-child(2){
+        font-size: 24px;
+        margin-top: 10px;
+    }
+    .sign_text p:nth-child(3), .sign_text p:nth-child(3) a{
+        font-size: 24px;
+    }
+}
+@media only screen and (max-width: 382px){
+    .IcInput input{
+        font-size: 17px;
+    }
+    .IcInput i{
+        font-size: 20px;
+    }
+    .eye_icons{
+        right: 50px;
+    }
+    .buttom button{
+        padding: 20px 100px;
+    }
+}
