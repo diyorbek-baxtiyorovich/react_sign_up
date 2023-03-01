@@ -119,6 +119,7 @@
 }
 .active input{
     color: #362DC3;
+    color: default;
 }
 
 .eye_icons{

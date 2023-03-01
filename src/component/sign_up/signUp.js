@@ -5,6 +5,27 @@ const active = 'active'
 const inactive = {}
 
 const SignUp = () => {
+    const changeFrom = e =>{
+        e.preventDefault()
+        let style;
+        if(inputValue === ''){
+            style = {color: 'red'}
+        }
+        else{
+            style = {color: '#362DC3'}
+        }
+        setStyle(style)
+    }
+    // Input bac-color " " - red
+    const [style, setStyle] = useState({});
+    const [inputValue, setValue] = useState('')
+    
+    const changeInputStyle = st =>{
+        let inputValue = st.target.value
+        console.log(inputValue)
+        setValue(inputValue)
+    }
+    
 
     const [selected, setSelect] = useState(0);
     const prevClick = (num) => () => {
@@ -15,7 +36,16 @@ const SignUp = () => {
     const [passwordInput, setPasswordInput] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("")
     const handlePasswordChange = evnt =>{
-        setPasswordInput(evnt.target.value);
+        let PasswordIn = evnt.target.value
+        setPasswordInput(PasswordIn);
+        let style;
+        if(inputValue === ''){
+            style = {color: 'red'}
+        }
+        else{
+            style = {color: '#362DC3'}
+        }
+        setStyle(style)
     }
     const togglePassword =()=>{
     if(passwordType === "password")
@@ -28,7 +58,8 @@ const SignUp = () => {
 
     // Confirm
     const handleConfirmChange = e => {
-        setConfirmPassword(e.target.value)
+        let ConfirmIn = e.target.value
+        setConfirmPassword(ConfirmIn)
     }
     const toggleConfirm =()=>{
         if(passwordType === "password")
@@ -48,26 +79,26 @@ const SignUp = () => {
                     <p>If you already have an account register </p>
                     <p>You can <a href="/">Login here !</a></p>
                 </div>
-                <form action="/" className='forms'>
+                <form onSubmit={changeFrom} className='forms'>
                     <label htmlFor="" className='label'>
                         <p className='form_text'>Email</p> 
                         <div className = {`IcInput ${selected === 1 ? active : inactive}`} onClick ={prevClick(1)}  >
                             <i class="fa-solid fa-envelope" ></i>
-                            <input type="text" placeholder='Enter your email address' />
+                            <input style={style} type="text" placeholder='Enter your email address' onChange={changeInputStyle} />
                         </div>                        
                     </label>
                     <label htmlFor="" className='label'>
                         <p className='form_text'>Username</p>
                         <div className = {`IcInput ${selected === 2 ? active : inactive}`} onClick ={prevClick(2)}>
                             <i class="fa-solid fa-user i"></i>
-                            <input type="text" placeholder='Username' />
+                            <input style={style} onChange={changeInputStyle} type="text" placeholder='Username' />
                         </div>                        
                     </label>
                     <label htmlFor="">
                         <p className='form_text'>Password</p>
                         <div className = {`IcInput ${selected === 3 ? active : inactive}`} onClick ={prevClick(3)} >
                             <i class="fa-solid fa-lock"></i>
-                            <input type={passwordType} onChange={handlePasswordChange} value={passwordInput} name="password" placeholder='Password' />
+                            <input type={passwordType} onChange={handlePasswordChange}  value={passwordInput} name="password" style={style} placeholder='Password' />
                             <div className='eye_icons' onClick={togglePassword}>
                                 { passwordType === "password" ? <i class = "fa-solid fa-eye-slash"></i> : <i class = "fa-solid fa-eye"></i> }
                             </div>
@@ -77,7 +108,7 @@ const SignUp = () => {
                         <p className='form_text'>Confirm Password</p>
                         <div className = {`IcInput ${selected === 4 ? active : inactive}`} onClick ={prevClick(4)}>
                             <i class="fa-solid fa-lock"></i>
-                            <input  type={passwordType} onChange={handleConfirmChange} value={confirmPassword} name="Confirm password" placeholder='Confirm Password'  />
+                            <input  type={passwordType} style={style} onChange={handleConfirmChange} value={confirmPassword} name="Confirm password" placeholder='Confirm Password'  />
                             <div className='eye_icons' onClick={toggleConfirm}>
                                 { passwordType === "password" ? <i class = "fa-solid fa-eye-slash"></i> : <i class = "fa-solid fa-eye"></i> }
                             </div>
